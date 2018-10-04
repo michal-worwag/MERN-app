@@ -87,3 +87,21 @@ export function deletePost(req, res) {
     });
   });
 }
+
+export function thumbUp(req, res) {
+  Post.update({ cuid: req.params.cuid }, { votes: req.body.votes }).exec((err, votes) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ votes });
+  });
+}
+
+export function thumbDown(req, res) {
+  Post.update({ cuid: req.params.cuid }, { votes: req.body.votes }).exec((err, votes) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ votes });
+  });
+}
